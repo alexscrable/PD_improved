@@ -1,571 +1,85 @@
-<!DOCTYPE html>
-<html lang="uk" data-lang="uk">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Північна Дивізія — молодіжна організація. Молодь. Дія. Братерство.">
-  <meta name="theme-color" content="#000000">
-
-  <!-- Open Graph -->
-  <meta property="og:title" content="Північна Дивізія">
-  <meta property="og:description" content="Молодь · Дія · Братерство">
-  <meta property="og:type" content="website">
-
-  <title>Північна Дивізія</title>
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-  <link rel="stylesheet" href="css/base.css">
-  <link rel="stylesheet" href="css/nav.css">
-  <link rel="stylesheet" href="css/sections.css">
-  <link rel="stylesheet" href="css/footer.css">
-  <link rel="stylesheet" href="css/lightbox.css">
-
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script defer src="js/main.js"></script>
-</head>
-<body>
-
-  <div id="nav-sentinel" aria-hidden="true" style="position:absolute;top:60px;height:1px;width:1px;pointer-events:none;"></div>
-
-  <!-- LIGHTBOX -->
-  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Перегляд фото">
-    <button class="lightbox__close" id="lightbox-close" aria-label="Закрити">✕</button>
-    <button class="lightbox__prev" id="lightbox-prev" aria-label="Попереднє фото">&#8249;</button>
-    <button class="lightbox__next" id="lightbox-next" aria-label="Наступне фото">&#8250;</button>
-    <div class="lightbox__img-wrap">
-      <img class="lightbox__img" id="lightbox-img" src="" alt="">
-    </div>
-    <div class="lightbox__counter" id="lightbox-counter"></div>
-  </div>
-
-  <!-- NAVIGATION -->
-  <header>
-    <nav class="navbar" id="navbar" role="navigation" aria-label="Головна навігація">
-
-      <a href="#" class="navbar__logo" aria-label="Північна Дивізія — на головну">
-        <div class="navbar__logo-icon" aria-hidden="true">
-          <img src="images/PDlogo.svg" alt="Лого">
-        </div>
-        <div class="navbar__logo-text">
-          <span class="navbar__logo-name" data-uk="Північна Дивізія" data-en="Nord Division">Північна Дивізія</span>
-        </div>
-      </a>
-
-      <ul class="navbar__links" role="list">
-        <li><a href="#manifesto" class="navbar__link" data-uk="Про нас" data-en="About">Про нас</a></li>
-        <li><a href="#ecosystem" class="navbar__link" data-uk="Екосистема" data-en="Ecosystem">Екосистема</a></li>
-        <li><a href="#media"     class="navbar__link" data-uk="Медіа" data-en="Media">Медіа</a></li>
-        <li><a href="#gallery"   class="navbar__link" data-uk="Галерея" data-en="Gallery">Галерея</a></li>
-        <li><a href="#join"      class="navbar__link" data-uk="Долучитися" data-en="Join Us">Долучитися</a></li>
-      </ul>
-
-      <div class="navbar__right">
-        <!-- Language toggle -->
-        <button class="lang-toggle" id="lang-toggle" aria-label="Змінити мову">
-          <span class="lang-toggle__option lang-toggle__option--active" id="lang-uk">UA</span>
-          <span class="lang-toggle__sep">|</span>
-          <span class="lang-toggle__option" id="lang-en">EN</span>
-        </button>
-
-        <a href="#join" class="navbar__cta" data-uk="Долучитись" data-en="Join">Долучитись</a>
-
-        <button class="hamburger" id="hamburger"
-                aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu">
-          <span class="hamburger__bar"></span>
-          <span class="hamburger__bar"></span>
-          <span class="hamburger__bar"></span>
-        </button>
-      </div>
-    </nav>
-
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Мобільне меню">
-      <nav>
-        <a href="#manifesto" class="mobile-menu__link" data-uk="Про нас" data-en="About">Про нас</a>
-        <a href="#ecosystem" class="mobile-menu__link" data-uk="Екосистема" data-en="Ecosystem">Екосистема</a>
-        <a href="#media"     class="mobile-menu__link" data-uk="Медіа" data-en="Media">Медіа</a>
-        <a href="#gallery"   class="mobile-menu__link" data-uk="Галерея" data-en="Gallery">Галерея</a>
-        <a href="#join"      class="mobile-menu__link" data-uk="Долучитися" data-en="Join Us">Долучитися</a>
-      </nav>
-      <p class="mobile-menu__footer" data-uk="Молодь · Дія · Братерство" data-en="Youth · Action · Brotherhood">Молодь · Дія · Братерство</p>
-    </div>
-  </header>
-
-  <main>
-
-    <!-- HERO -->
-    <section class="hero" id="hero" aria-label="Головний банер">
-      <div class="hero__bg" aria-hidden="true">
-        <img src="images/1.jpg" alt="" class="hero__bg-img">
-      </div>
-      <div class="hero__grid" aria-hidden="true"></div>
-
-      <div class="hero__content">
-        <p class="hero__eyebrow" data-uk="Молодіжна організація" data-en="Youth Organization">Молодіжна організація</p>
-
-        <h1 class="hero__title" aria-label="Північна Дивізія">
-          <span class="hero__title-line" data-uk="Північна" data-en="Nord">Північна</span>
-          <span class="hero__title-line" data-uk="Дивізія" data-en="Division">Дивізія</span>
-        </h1>
-
-        <p class="hero__subtitle" data-uk="Молодь · Дія · Братерство" data-en="Youth · Action · Brotherhood">Молодь · Дія · Братерство</p>
-
-        <div class="hero__divider" aria-hidden="true">
-          <span data-uk="Приєднуйся до руху" data-en="Join the movement">Приєднуйся до руху</span>
-        </div>
-
-        <div class="hero__actions">
-          <a href="#join"      class="btn btn--primary btn--lg" data-uk="Долучитися" data-en="Join Now">Долучитися</a>
-          <a href="#manifesto" class="btn btn--outline btn--lg" data-uk="Дізнатися більше" data-en="Learn More">Дізнатися більше</a>
-        </div>
-      </div>
-
-      <div class="hero__scroll" aria-hidden="true">
-        <span class="hero__scroll-text" data-uk="Скрол" data-en="Scroll">Скрол</span>
-        <div class="hero__scroll-line"></div>
-      </div>
-    </section>
-
-    <!-- MANIFESTO / ABOUT -->
-    <section class="manifesto section" id="manifesto">
-      <div class="manifesto__watermark" aria-hidden="true">ДИВІЗІЯ</div>
-      <div class="container">
-        <div class="manifesto__grid">
-
-          <div class="reveal">
-            <p class="label" data-uk="Наш Маніфест" data-en="Our Manifesto">Наш Маніфест</p>
-            <blockquote class="manifesto__quote">
-              <span data-uk="Ми — <em>не просто</em><br>організація.<br>Ми — <em>екосистема</em><br>майбутнього." 
-                    data-en="We are <em>not just</em><br>a movement.<br>We are <em>the ecosystem</em><br>of tomorrow.">
-                Ми — <em>не просто</em><br>
-                організація.<br>
-                Ми — <em>екосистема</em><br>
-                майбутнього.
-              </span>
-            </blockquote>
-            <p class="manifesto__body" 
-               data-uk="Заснована у 2025 році, «Північна Дивізія» не чекає, поки хтось щось зробить — ми вже діємо. Без зайвих слів і порожніх обіцянок: осередки в містах, реальні ініціативи та люди, які щодня доводять, що молодь — це сила."
-               data-en="Founded in 2025, Nord Division doesn't wait for someone else to make a difference — we already are. No empty words, no hollow promises: just city cells, real initiatives, and people who prove every day that youth is a force to be reckoned with.">
-              Заснована у 2025 році, «Північна Дивізія» не чекає, поки хтось щось зробить — ми вже діємо. Без зайвих слів і порожніх обіцянок: осередки в містах, реальні ініціативи та люди, які щодня доводять, що молодь — це сила.
-            </p>
-            <p class="manifesto__body"
-               data-uk="П'ять міст. Сотні братів. І це лише початок того, що ми будуємо разом."
-               data-en="Five cities. Hundreds of brothers. And this is only the beginning of what we're building together.">
-              П'ять міст. Сотні братів. І це лише початок того, що ми будуємо разом.
-            </p>
-          </div>
-
-          <div class="manifesto__values reveal">
-            <article class="value">
-              <span class="value__num">01</span>
-              <div>
-                <h3 class="value__name" data-uk="Молодь" data-en="Youth">Молодь</h3>
-                <p class="value__desc"
-                   data-uk="Молодість — не вік у паспорті. Це заряд, що штовхає тебе вперед, коли всі навколо кажуть «зачекай». Ми — для тих, хто не чекає."
-                   data-en="Youth isn't about your age. It's the charge that drives you forward when everyone else says 'wait'. We're here for those who don't wait.">
-                  Молодість — не вік у паспорті. Це заряд, що штовхає тебе вперед, коли всі навколо кажуть «зачекай». Ми — для тих, хто не чекає.
-                </p>
-              </div>
-            </article>
-            <article class="value">
-              <span class="value__num">02</span>
-              <div>
-                <h3 class="value__name" data-uk="Дія" data-en="Action">Дія</h3>
-                <p class="value__desc"
-                   data-uk="Вишколи, волонтерство, ініціативи — там, де потрібна реальна допомога. Ми не коментуємо зі сторони — ми в центрі подій."
-                   data-en="Training, volunteering, ground-level initiatives — wherever real help is needed. We don't comment from the sidelines. We're right in the middle of it.">
-                  Вишколи, волонтерство, ініціативи — там, де потрібна реальна допомога. Ми не коментуємо зі сторони — ми в центрі подій.
-                </p>
-              </div>
-            </article>
-            <article class="value">
-              <span class="value__num">03</span>
-              <div>
-                <h3 class="value__name" data-uk="Братерство" data-en="Brotherhood">Братерство</h3>
-                <p class="value__desc"
-                   data-uk="Тут не просто «знайомі з організації». Тут — люди, які тримають твою спину. Від Києва до Миколаєва — один дух, одні цінності."
-                   data-en="These aren't just 'people from the org'. These are people who have your back. From Kyiv to Mykolaiv — one spirit, one set of values.">
-                  Тут не просто «знайомі з організації». Тут — люди, які тримають твою спину. Від Києва до Миколаєва — один дух, одні цінності.
-                </p>
-              </div>
-            </article>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- STATS -->
-    <section class="stats section--sm" id="stats" aria-label="Статистика організації">
-      <div class="container">
-        <div class="stats__grid">
-          <div class="stat reveal">
-            <div class="stat__number" data-counter="200" data-suffix="+">0</div>
-            <p class="stat__label" data-uk="Активних учасників" data-en="Active Members">Активних учасників</p>
-          </div>
-          <div class="stat reveal">
-            <div class="stat__number" data-counter="7" data-suffix="">0</div>
-            <p class="stat__label" data-uk="Місяців активності" data-en="Months Active">Місяців активності</p>
-          </div>
-          <div class="stat reveal">
-            <div class="stat__number" data-counter="5" data-suffix="">0</div>
-            <p class="stat__label" data-uk="Міст присутності" data-en="Cities">Міст присутності</p>
-          </div>
-          <div class="stat reveal">
-            <div class="stat__number" data-counter="50" data-suffix="+">0</div>
-            <p class="stat__label" data-uk="Проведених заходів" data-en="Events Held">Проведених заходів</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ECOSYSTEM -->
-    <section class="ecosystem section" id="ecosystem">
-      <div class="container">
-        <div class="ecosystem__header reveal">
-          <div>
-            <p class="label" data-uk="Наша Екосистема" data-en="Our Ecosystem">Наша Екосистема</p>
-            <h2 class="section-title" data-uk="Більше,<br>ніж рух" data-en="More than<br>a movement">Більше,<br>ніж рух</h2>
-          </div>
-          <div class="ecosystem__intro-block">
-            <p class="ecosystem__intro"
-               data-uk="«Північна Дивізія» — серце екосистеми. Навколо нас — тату-студія, музичний лейбл і барбершоп, що живуть тим же духом і тими ж цінностями."
-               data-en="Nord Division is the heart of an ecosystem. Around us — a tattoo studio, music label, and barbershop that share the same spirit and the same values.">
-              «Північна Дивізія» — серце екосистеми. Навколо нас — тату-студія, музичний лейбл і барбершоп, що живуть тим же духом і тими ж цінностями.
-            </p>
-            <p class="ecosystem__intro"
-               data-uk="Кожен напрямок — окремий світ. Але всі вони об'єднані одним: бажанням будувати середовище для тих, хто хоче більшого."
-               data-en="Each branch is its own world. But they all share one thing: the desire to build a space for people who want more.">
-              Кожен напрямок — окремий світ. Але всі вони об'єднані одним: бажанням будувати середовище для тих, хто хоче більшого.
-            </p>
-          </div>
-        </div>
-
-        <div class="ecosystem__cards">
-          <article class="eco-card eco-card--org reveal">
-            <div class="eco-card__bg" aria-hidden="true"></div>
-            <span class="eco-card__num" aria-hidden="true">01</span>
-            <div class="eco-card__body">
-              <p class="eco-card__tag" data-uk="Барбершоп" data-en="Barbershop">Барбершоп</p>
-              <h3 class="eco-card__title">Nord<br>Barbershop</h3>
-              <p class="eco-card__desc"
-                 data-uk="Місце для своїх. Стрижки, атмосфера і спільнота — тут зустрічаються ті, хто поділяє наші цінності."
-                 data-en="A place for those who belong. Cuts, atmosphere, and community — where like-minded people connect.">
-                Місце для своїх. Стрижки, атмосфера і спільнота — тут зустрічаються ті, хто поділяє наші цінності.
-              </p>
-              <a href="https://www.instagram.com/nd_barberkyiv?igsh=MXdra3J6aTdjOG94aA==" target="_blank" rel="noopener" class="eco-card__link">
-                <span data-uk="Детальніше" data-en="Learn more">Детальніше</span> <span class="eco-card__link-arrow" aria-hidden="true">→</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="eco-card eco-card--tattoo reveal">
-            <div class="eco-card__bg" aria-hidden="true"></div>
-            <span class="eco-card__num" aria-hidden="true">02</span>
-            <div class="eco-card__body">
-              <p class="eco-card__tag" data-uk="Тату-студія" data-en="Tattoo Studio">Тату-студія</p>
-              <h3 class="eco-card__title">Nord<br>Tattoo</h3>
-              <p class="eco-card__desc"
-                 data-uk="Тату як знак приналежності та пам'яті. Авторські роботи у стилі dark-realism і traditional."
-                 data-en="Tattoos as a mark of belonging and memory. Original work in dark-realism and traditional styles.">
-                Тату як знак приналежності та пам'яті. Авторські роботи у стилі dark-realism і traditional.
-              </p>
-              <a href="https://www.instagram.com/nord_tattoo_kyiv?igsh=NWw2ejk5bzJjaGU0" target="_blank" rel="noopener" class="eco-card__link">
-                <span data-uk="Портфоліо" data-en="Portfolio">Портфоліо</span> <span class="eco-card__link-arrow" aria-hidden="true">→</span>
-              </a>
-            </div>
-          </article>
-
-          <article class="eco-card eco-card--label reveal">
-            <div class="eco-card__bg" aria-hidden="true"></div>
-            <span class="eco-card__num" aria-hidden="true">03</span>
-            <div class="eco-card__body">
-              <p class="eco-card__tag" data-uk="Музичний лейбл" data-en="Music Label">Музичний лейбл</p>
-              <h3 class="eco-card__title">Nord<br>Music</h3>
-              <p class="eco-card__desc"
-                 data-uk="Андеграундна музика, що резонує з ідеологією руху. Від людей, які живуть цим."
-                 data-en="Underground music that resonates with the ideology of the movement. Made by people who live it.">
-                Андеграундна музика, що резонує з ідеологією руху. Від людей, які живуть цим.
-              </p>
-              <a href="https://www.instagram.com/nord.division.music?igsh=MjV1YWZ6cG53bXQ4" target="_blank" rel="noopener" class="eco-card__link">
-                <span data-uk="Слухати" data-en="Listen">Слухати</span> <span class="eco-card__link-arrow" aria-hidden="true">→</span>
-              </a>
-            </div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <!-- MEDIA / NEWS -->
-    <section class="media section" id="media">
-      <div class="container">
-        <div class="media__header reveal">
-          <div>
-            <p class="label" data-uk="Медіа та Новини" data-en="Media & News">Медіа та Новини</p>
-            <h2 class="section-title" data-uk="Останні<br>події" data-en="Latest<br>News">Останні<br>події</h2>
-          </div>
-          <a href="#" class="view-all" data-uk="Всі публікації →" data-en="All posts →">Всі публікації →</a>
-        </div>
-
-        <div class="news-grid reveal">
-
-          <article class="news-card news-card--featured">
-            <div class="news-card__thumb-wrap">
-              <img class="news-card__thumb"
-                   src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=900&q=80&fit=crop"
-                   alt="Відкриття осередку в Миколаєві" loading="lazy">
-            </div>
-            <div class="news-card__body">
-              <div class="news-card__meta">
-                <span class="news-card__tag" data-uk="Осередок" data-en="Cell">Осередок</span>
-                <time class="news-card__date" datetime="2026-04-20" data-uk="20 Квітня 2026" data-en="April 20, 2026">20 Квітня 2026</time>
-              </div>
-              <h3 class="news-card__title" data-uk="Відкриття осередку в Миколаєві" data-en="New Cell Opens in Mykolaiv">Відкриття осередку в Миколаєві</h3>
-              <p class="news-card__excerpt"
-                 data-uk="«Північна Дивізія» продовжує розширюватись — новий осередок відкрито в Миколаєві. Тепер нас п'ятеро: зустрічаємо нових братів на півдні країни."
-                 data-en="Nord Division keeps growing — a new cell has opened in Mykolaiv. That makes five. Welcoming our new brothers from the south.">
-                «Північна Дивізія» продовжує розширюватись — новий осередок відкрито в Миколаєві. Тепер нас п'ятеро: зустрічаємо нових братів на півдні країни.
-              </p>
-            </div>
-          </article>
-
-          <article class="news-card">
-            <div class="news-card__thumb-wrap">
-              <img class="news-card__thumb"
-                   src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=700&q=80&fit=crop"
-                   alt="Київський осередок у центрі адопції тварин" loading="lazy">
-            </div>
-            <div class="news-card__body">
-              <div class="news-card__meta">
-                <span class="news-card__tag" data-uk="Волонтерство" data-en="Volunteering">Волонтерство</span>
-                <time class="news-card__date" datetime="2026-04-05" data-uk="5 Квітня 2026" data-en="April 5, 2026">5 Квітня 2026</time>
-              </div>
-              <h3 class="news-card__title"
-                  data-uk="Київський осередок відвідав центр адопції тварин"
-                  data-en="Kyiv Cell Visits Animal Shelter">Київський осередок відвідав центр адопції тварин</h3>
-              <p class="news-card__excerpt"
-                 data-uk="Хлопці з Києва провели час із підопічними центру — допомогли, поспілкувались і нагадали, що дія може бути доброю."
-                 data-en="The Kyiv guys spent time with shelter animals — helping out, connecting, and proving that action can also mean kindness.">
-                Хлопці з Києва провели час із підопічними центру — допомогли, поспілкувались і нагадали, що дія може бути доброю.
-              </p>
-            </div>
-          </article>
-
-          <article class="news-card">
-            <div class="news-card__thumb-wrap">
-              <img class="news-card__thumb"
-                   src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&q=80&fit=crop"
-                   alt="Nord Records — трек Лабуда" loading="lazy">
-            </div>
-            <div class="news-card__body">
-              <div class="news-card__meta">
-                <span class="news-card__tag" data-uk="Музика" data-en="Music">Музика</span>
-                <time class="news-card__date" datetime="2026-03-20" data-uk="20 Березня 2026" data-en="March 20, 2026">20 Березня 2026</time>
-              </div>
-              <h3 class="news-card__title"
-                  data-uk="Nord Records: вийшов новий трек «Лабуда»"
-                  data-en="Nord Records: New Track 'Labuda' Is Out">Nord Records: вийшов новий трек «Лабуда»</h3>
-              <p class="news-card__excerpt"
-                 data-uk="Свіжий реліз від нашого лейблу вже доступний на всіх стрімінгових платформах. Слухай — і розповідай своїм."
-                 data-en="Fresh off the Nord Records label and now live on every streaming platform. Hit play — and share it with your people.">
-                Свіжий реліз від нашого лейблу вже доступний на всіх стрімінгових платформах. Слухай — і розповідай своїм.
-              </p>
-            </div>
-          </article>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- GALLERY -->
-    <section class="gallery section" id="gallery">
-      <div class="container">
-        <div class="gallery__header reveal">
-          <p class="label" data-uk="Фотогалерея" data-en="Photo Gallery">Фотогалерея</p>
-          <h2 class="section-title" data-uk="Наші моменти" data-en="Our Moments">Наші моменти</h2>
-        </div>
-      </div>
-      <div style="padding-inline: var(--container-pad);">
-        <div class="gallery__grid" role="list" aria-label="Галерея фотографій">
-
-          <figure class="gallery__item" role="listitem" data-index="0">
-            <img class="gallery__img" src="images/1.jpg" alt="Вишкіл учасників організації" loading="lazy">
-            <div class="gallery__overlay" aria-hidden="true">
-              <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button>
-            </div>
-          </figure>
-
-          <figure class="gallery__item" role="listitem" data-index="1">
-            <img class="gallery__img" src="images/2.jpg" alt="Командна робота" loading="lazy">
-            <div class="gallery__overlay" aria-hidden="true">
-              <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button>
-            </div>
-          </figure>
-
-          <figure class="gallery__item" role="listitem" data-index="2">
-            <img class="gallery__img" src="images/3.jpg" alt="Захід організації" loading="lazy">
-            <div class="gallery__overlay" aria-hidden="true">
-              <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button>
-            </div>
-          </figure>
-
-          <figure class="gallery__item" role="listitem" data-index="3">
-            <img class="gallery__img" src="images/4.jpg" alt="Братерство та єдність" loading="lazy">
-            <div class="gallery__overlay" aria-hidden="true">
-              <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button>
-            </div>
-          </figure>
-
-          <figure class="gallery__item" role="listitem" data-index="4">
-            <img class="gallery__img" src="images/5.jpg" alt="Молодь у дії" loading="lazy">
-            <div class="gallery__overlay" aria-hidden="true">
-              <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button>
-            </div>
-          </figure>
-
-          <figure class="gallery__item" role="listitem" data-index="5">
-            <img class="gallery__img" src="images/6.jpg" alt="Культура руху" loading="lazy">
-            <div class="gallery__overlay" aria-hidden="true">
-              <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button>
-            </div>
-          </figure>
-
-          <figure class="gallery__item" role="listitem" data-index="6">
-            <img class="gallery__img" src="images/7.jpg" alt="Nord Tattoo Studio" loading="lazy">
-            <div class="gallery__overlay" aria-hidden="true">
-              <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button>
-            </div>
-          </figure>
-
-          <figure class="gallery__item" role="listitem" data-index="7">
-            <img class="gallery__img" src="images/8.jpg" alt="Захід спільноти" loading="lazy">
-            <div class="gallery__overlay" aria-hidden="true">
-              <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button>
-            </div>
-          </figure>
-
-          <figure class="gallery__item" role="listitem" data-index="8">
-            <img class="gallery__img" src="images/9.jpg" alt="Братерство" loading="lazy">
-            <div class="gallery__overlay" aria-hidden="true">
-              <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button>
-            </div>
-          </figure>
-
-          <figure class="gallery__item" role="listitem" data-index="9">
-            <img class="gallery__img" src="images/10.jpg" alt="Активність осередку" loading="lazy">
-            <div class="gallery__overlay" aria-hidden="true">
-              <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button>
-            </div>
-          </figure>
-
-          <figure class="gallery__item" role="listitem" data-index="10">
-            <img class="gallery__img" src="images/11.jpg" alt="Спільний момент" loading="lazy">
-            <div class="gallery__overlay" aria-hidden="true">
-              <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button>
-            </div>
-          </figure>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- JOIN / CTA -->
-    <section class="join section" id="join">
-      <div class="join__watermark" aria-hidden="true">2026</div>
-      <div class="container">
-        <div class="join__inner">
-
-          <p class="join__label" data-uk="Стати частиною руху" data-en="Become Part of the Movement">Стати частиною руху</p>
-          <h2 class="join__title reveal" data-uk="Приєднуйся<br>до нас" data-en="Join<br>Us">Приєднуйся<br>до нас</h2>
-          <p class="join__sub reveal"
-             data-uk="Ми шукаємо не просто учасників — ми шукаємо людей, які готові горіти разом з нами. Якщо ти молодий, відданий і хочеш стати частиною чогось більшого — твоє місце тут."
-             data-en="We're not just looking for members — we're looking for people ready to burn for something. If you're young, committed, and want to be part of something bigger than yourself — your place is here.">
-            Ми шукаємо не просто учасників — ми шукаємо людей, які готові горіти разом з нами. Якщо ти молодий, відданий і хочеш стати частиною чогось більшого — твоє місце тут.
-          </p>
-          <div class="join__actions reveal">
-            <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer"
-               class="btn btn--primary btn--lg" data-uk="Заповнити анкету" data-en="Fill Out the Form">Заповнити анкету</a>
-            <a href="#partners" class="btn btn--outline btn--lg" data-uk="Стати партнером" data-en="Become a Partner">Стати партнером</a>
-          </div>
-
-          <div class="partners" id="partners">
-            <p class="label" style="justify-content:center;" data-uk="Партнерство" data-en="Partnership">Партнерство</p>
-            <h3 class="partners__title reveal" data-uk="Допоможи нам будувати" data-en="Help Us Build">Допоможи нам будувати</h3>
-            <p class="join__sub reveal" style="max-width:540px; margin: 0 auto 2.5rem;"
-               data-uk="Хочеш підтримати організацію — фінансово, ресурсами чи медійно? Заповни коротку форму і ми зв'яжемося з тобою."
-               data-en="Want to support the organization — financially, with resources, or through media? Fill out a short form and we'll reach out.">
-              Хочеш підтримати організацію — фінансово, ресурсами чи медійно? Заповни коротку форму і ми зв'яжемося з тобою.
-            </p>
-            <div class="join__actions reveal">
-              <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer"
-                 class="btn btn--primary btn--lg" data-uk="Стати партнером →" data-en="Become a Partner →">Стати партнером →</a>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-  </main>
-
-  <!-- FOOTER -->
-  <footer class="footer" role="contentinfo">
-    <div class="container">
-
-      <p class="footer__slogan" data-uk="Молодь • Дія • Братерство" data-en="Youth • Action • Brotherhood">Молодь • Дія • Братерство</p>
-
-      <div class="footer__grid">
-
-        <div class="footer__col">
-          <p class="footer__col-title" data-uk="Контакти" data-en="Contacts">Контакти</p>
-          <p>Email: <a href="mailto:info@pivnichnadiviziya.ua">info@pivnichnadiviziya.ua</a></p>
-          <p><span data-uk="Телефон" data-en="Phone">Телефон</span>: <a href="tel:+380000000000">+38 (000) 000-00-00</a></p>
-        </div>
-
-        <div class="footer__col">
-          <p class="footer__col-title" data-uk="Соціальні мережі" data-en="Social Media">Соціальні мережі</p>
-          <div class="social-links">
-            <a href="https://www.instagram.com/go.pivnichna.divisiya?igsh=YnBhZTJmZ2YxbGg4" class="social-link" aria-label="Instagram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="2" y="2" width="20" height="20" rx="5"/>
-                <circle cx="12" cy="12" r="5"/>
-                <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
-              </svg>
-            </a>
-            <a href="https://t.me/pivnichna_divisiya" class="social-link" aria-label="Telegram">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M21 5L2 12.5l7 1M21 5l-4.5 16L9.5 13.5M21 5L9.5 13.5m0 0v5l3-3"/>
-              </svg>
-            </a>
-            <a href="#" class="social-link" aria-label="YouTube">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="2" y="5" width="20" height="14" rx="3"/>
-                <path d="M10 9l6 3-6 3V9z" fill="currentColor" stroke="none"/>
-              </svg>
-            </a>
-          </div>
-        </div>
-
-        <div class="footer__col">
-          <p class="footer__col-title" data-uk="Екосистема" data-en="Ecosystem">Екосистема</p>
-          <ul>
-            <li><a href="https://www.instagram.com/nd_barberkyiv?igsh=MXdra3J6aTdjOG94aA==">Nord Barbershop</a></li>
-            <li><a href="https://www.instagram.com/nord_tattoo_kyiv?igsh=NWw2ejk5bzJjaGU0">Nord Tattoo Studio</a></li>
-            <li><a href="https://www.instagram.com/nord.division.music?igsh=MjV1YWZ6cG53bXQ4">Nord Records</a></li>
-          </ul>
-        </div>
-
-      </div>
-
-      <div class="footer__bottom">
-        <p>© 2026 <span data-uk="Північна Дивізія. Всі права захищено." data-en="Nord Division. All rights reserved.">Північна Дивізія. Всі права захищено.</span></p>
-        <p class="footer__glory" data-uk="Слава Україні" data-en="Glory to Ukraine">Слава Україні</p>
-      </div>
-
-    </div>
-  </footer>
-
-</body>
-</html>
+<!DOCTYPE html> <html lang="uk" data-lang="uk"> <head> <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <meta name="description" content="Північна Дивізія — молодіжна організація. Молодь. Дія. Братерство."> <meta name="theme-color" content="#000000"> <meta property="og:title" content="Північна Дивізія"> <meta property="og:description" content="Молодь · Дія · Братерство"> <meta property="og:type" content="website"> <title>Північна Дивізія</title> <link rel="dns-prefetch" href="//fonts.googleapis.com">
+<link rel="dns-prefetch" href="//fonts.gstatic.com">
+<link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+<link rel="preload" href="css/base.css" as="style">
+<link rel="preload" href="images/1.jpg" as="image" fetchpriority="high">
+<link rel="preconnect" href="https://fonts.googleapis.com"> <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin> <link rel="stylesheet" href="css/base.css"> <link rel="stylesheet" href="css/nav.css"> <link rel="stylesheet" href="css/sections.css"> <link rel="stylesheet" href="css/footer.css"> <link rel="stylesheet" href="css/responsive.css"> <link rel="stylesheet" href="css/lightbox.css"> <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script> <script defer src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script> <script defer src="js/main.js"></script> </head> <body> <div id="nav-sentinel" aria-hidden="true" style="position:absolute;top:60px;height:1px;width:1px;pointer-events:none;"></div> <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Перегляд фото"> <button class="lightbox__close" id="lightbox-close" aria-label="Закрити">✕</button> <button class="lightbox__prev" id="lightbox-prev" aria-label="Попереднє фото">&#8249;</button> <button class="lightbox__next" id="lightbox-next" aria-label="Наступне фото">&#8250;</button> <div class="lightbox__img-wrap"> <img class="lightbox__img" id="lightbox-img" src="" alt=""> </div> <div class="lightbox__counter" id="lightbox-counter"></div> </div> <header> <nav class="navbar" id="navbar" role="navigation" aria-label="Головна навігація"> <a href="#" class="navbar__logo" aria-label="Північна Дивізія — на головну"> <div class="navbar__logo-icon" aria-hidden="true"> <img src="images/PDlogo.svg" alt="Лого"> </div> <div class="navbar__logo-text"> <span class="navbar__logo-name" data-uk="Північна Дивізія" data-en="Nord Division">Північна Дивізія</span> </div> </a> <ul class="navbar__links" role="list"> <li><a href="#manifesto" class="navbar__link" data-uk="Про нас" data-en="About">Про нас</a></li> <li><a href="#ecosystem" class="navbar__link" data-uk="Екосистема" data-en="Ecosystem">Екосистема</a></li> <li><a href="#media"     class="navbar__link" data-uk="Медіа" data-en="Media">Медіа</a></li> <li><a href="#gallery"   class="navbar__link" data-uk="Галерея" data-en="Gallery">Галерея</a></li> <li><a href="#join"      class="navbar__link" data-uk="Долучитися" data-en="Join Us">Долучитися</a></li> </ul> <div class="navbar__right"> <button class="lang-toggle" id="lang-toggle" aria-label="Змінити мову"> <span class="lang-toggle__option lang-toggle__option--active" id="lang-uk">UA</span> <span class="lang-toggle__sep">|</span> <span class="lang-toggle__option" id="lang-en">EN</span> </button> <a href="#join" class="navbar__cta" data-uk="Долучитись" data-en="Join">Долучитись</a> <button class="hamburger" id="hamburger"
+aria-label="Відкрити меню" aria-expanded="false" aria-controls="mobile-menu"> <span class="hamburger__bar"></span> <span class="hamburger__bar"></span> <span class="hamburger__bar"></span> </button> </div> </nav> <div class="mobile-menu" id="mobile-menu" role="dialog" aria-modal="true" aria-label="Мобільне меню"> <nav> <a href="#manifesto" class="mobile-menu__link" data-uk="Про нас" data-en="About">Про нас</a> <a href="#ecosystem" class="mobile-menu__link" data-uk="Екосистема" data-en="Ecosystem">Екосистема</a> <a href="#media"     class="mobile-menu__link" data-uk="Медіа" data-en="Media">Медіа</a> <a href="#gallery"   class="mobile-menu__link" data-uk="Галерея" data-en="Gallery">Галерея</a> <a href="#join"      class="mobile-menu__link" data-uk="Долучитися" data-en="Join Us">Долучитися</a> </nav> <p class="mobile-menu__footer" data-uk="Молодь · Дія · Братерство" data-en="Youth · Action · Brotherhood">Молодь · Дія · Братерство</p> </div> </header> <main> <section class="hero" id="hero" aria-label="Головний банер"> <div class="hero__bg" aria-hidden="true"> <img src="images/1.jpg" width="1600" height="1199" alt="" class="hero__bg-img" fetchpriority="high" width="1600" height="900"> </div> <div class="hero__grid" aria-hidden="true"></div> <div class="hero__content"> <p class="hero__eyebrow" data-uk="Молодіжна організація" data-en="Youth Organization">Молодіжна організація</p> <h1 class="hero__title" aria-label="Північна Дивізія"> <span class="hero__title-line" data-uk="Північна" data-en="Nord">Північна</span> <span class="hero__title-line" data-uk="Дивізія" data-en="Division">Дивізія</span> </h1> <p class="hero__subtitle" data-uk="Молодь · Дія · Братерство" data-en="Youth · Action · Brotherhood">Молодь · Дія · Братерство</p> <div class="hero__divider" aria-hidden="true"> <span data-uk="Приєднуйся до руху" data-en="Join the movement">Приєднуйся до руху</span> </div> <div class="hero__actions"> <a href="#join"      class="btn btn--primary btn--lg" data-uk="Долучитися" data-en="Join Now">Долучитися</a> <a href="#manifesto" class="btn btn--outline btn--lg" data-uk="Дізнатися більше" data-en="Learn More">Дізнатися більше</a> </div> </div> <div class="hero__scroll" aria-hidden="true"> <span class="hero__scroll-text" data-uk="Скрол" data-en="Scroll">Скрол</span> <div class="hero__scroll-line"></div> </div> </section> <section class="manifesto section" id="manifesto"> <div class="manifesto__watermark" aria-hidden="true">ДИВІЗІЯ</div> <div class="container"> <div class="manifesto__grid"> <div class="reveal"> <p class="label" data-uk="Наш Маніфест" data-en="Our Manifesto">Наш Маніфест</p> <blockquote class="manifesto__quote"> <span data-uk="Ми — <em>не просто</em><br>організація.<br>Ми — <em>екосистема</em><br>майбутнього."
+data-en="We are <em>not just</em><br>a movement.<br>We are <em>the ecosystem</em><br>of tomorrow.">
+Ми — <em>не просто</em><br>
+організація.<br>
+Ми — <em>екосистема</em><br>
+майбутнього.
+</span> </blockquote> <p class="manifesto__body"
+data-uk="Заснована у 2025 році, «Північна Дивізія» не чекає, поки хтось щось зробить — ми вже діємо. Без зайвих слів і порожніх обіцянок: осередки в містах, реальні ініціативи та люди, які щодня доводять, що молодь — це сила."
+data-en="Founded in 2025, Nord Division doesn't wait for someone else to make a difference — we already are. No empty words, no hollow promises: just city cells, real initiatives, and people who prove every day that youth is a force to be reckoned with.">
+Заснована у 2025 році, «Північна Дивізія» не чекає, поки хтось щось зробить — ми вже діємо. Без зайвих слів і порожніх обіцянок: осередки в містах, реальні ініціативи та люди, які щодня доводять, що молодь — це сила.
+</p> <p class="manifesto__body"
+data-uk="П'ять міст. Сотні братів. І це лише початок того, що ми будуємо разом."
+data-en="Five cities. Hundreds of brothers. And this is only the beginning of what we're building together.">
+П'ять міст. Сотні братів. І це лише початок того, що ми будуємо разом.
+</p> </div> <div class="manifesto__values reveal"> <article class="value"> <span class="value__num">01</span> <div> <h3 class="value__name" data-uk="Молодь" data-en="Youth">Молодь</h3> <p class="value__desc"
+data-uk="Молодість — не вік у паспорті. Це заряд, що штовхає тебе вперед, коли всі навколо кажуть «зачекай». Ми — для тих, хто не чекає."
+data-en="Youth isn't about your age. It's the charge that drives you forward when everyone else says 'wait'. We're here for those who don't wait.">
+Молодість — не вік у паспорті. Це заряд, що штовхає тебе вперед, коли всі навколо кажуть «зачекай». Ми — для тих, хто не чекає.
+</p> </div> </article> <article class="value"> <span class="value__num">02</span> <div> <h3 class="value__name" data-uk="Дія" data-en="Action">Дія</h3> <p class="value__desc"
+data-uk="Вишколи, волонтерство, ініціативи — там, де потрібна реальна допомога. Ми не коментуємо зі сторони — ми в центрі подій."
+data-en="Training, volunteering, ground-level initiatives — wherever real help is needed. We don't comment from the sidelines. We're right in the middle of it.">
+Вишколи, волонтерство, ініціативи — там, де потрібна реальна допомога. Ми не коментуємо зі сторони — ми в центрі подій.
+</p> </div> </article> <article class="value"> <span class="value__num">03</span> <div> <h3 class="value__name" data-uk="Братерство" data-en="Brotherhood">Братерство</h3> <p class="value__desc"
+data-uk="Тут не просто «знайомі з організації». Тут — люди, які тримають твою спину. Від Києва до Миколаєва — один дух, одні цінності."
+data-en="These aren't just 'people from the org'. These are people who have your back. From Kyiv to Mykolaiv — one spirit, one set of values.">
+Тут не просто «знайомі з організації». Тут — люди, які тримають твою спину. Від Києва до Миколаєва — один дух, одні цінності.
+</p> </div> </article> </div> </div> </div> </section> <section class="stats section--sm" id="stats" aria-label="Статистика організації"> <div class="container"> <div class="stats__grid"> <div class="stat reveal"> <div class="stat__number" data-counter="200" data-suffix="+">0</div> <p class="stat__label" data-uk="Активних учасників" data-en="Active Members">Активних учасників</p> </div> <div class="stat reveal"> <div class="stat__number" data-counter="7" data-suffix="">0</div> <p class="stat__label" data-uk="Місяців активності" data-en="Months Active">Місяців активності</p> </div> <div class="stat reveal"> <div class="stat__number" data-counter="5" data-suffix="">0</div> <p class="stat__label" data-uk="Міст присутності" data-en="Cities">Міст присутності</p> </div> <div class="stat reveal"> <div class="stat__number" data-counter="50" data-suffix="+">0</div> <p class="stat__label" data-uk="Проведених заходів" data-en="Events Held">Проведених заходів</p> </div> </div> </div> </section> <section class="ecosystem section" id="ecosystem"> <div class="container"> <div class="ecosystem__header reveal"> <div> <p class="label" data-uk="Наша Екосистема" data-en="Our Ecosystem">Наша Екосистема</p> <h2 class="section-title" data-uk="Більше,<br>ніж рух" data-en="More than<br>a movement">Більше,<br>ніж рух</h2> </div> <div class="ecosystem__intro-block"> <p class="ecosystem__intro"
+data-uk="«Північна Дивізія» — серце екосистеми. Навколо нас — тату-студія, музичний лейбл і барбершоп, що живуть тим же духом і тими ж цінностями."
+data-en="Nord Division is the heart of an ecosystem. Around us — a tattoo studio, music label, and barbershop that share the same spirit and the same values.">
+«Північна Дивізія» — серце екосистеми. Навколо нас — тату-студія, музичний лейбл і барбершоп, що живуть тим же духом і тими ж цінностями.
+</p> <p class="ecosystem__intro"
+data-uk="Кожен напрямок — окремий світ. Але всі вони об'єднані одним: бажанням будувати середовище для тих, хто хоче більшого."
+data-en="Each branch is its own world. But they all share one thing: the desire to build a space for people who want more.">
+Кожен напрямок — окремий світ. Але всі вони об'єднані одним: бажанням будувати середовище для тих, хто хоче більшого.
+</p> </div> </div> <div class="ecosystem__cards"> <article class="eco-card eco-card--org reveal"> <div class="eco-card__bg" aria-hidden="true"></div> <span class="eco-card__num" aria-hidden="true">01</span> <div class="eco-card__body"> <p class="eco-card__tag" data-uk="Барбершоп" data-en="Barbershop">Барбершоп</p> <h3 class="eco-card__title">Nord<br>Barbershop</h3> <p class="eco-card__desc"
+data-uk="Місце для своїх. Стрижки, атмосфера і спільнота — тут зустрічаються ті, хто поділяє наші цінності."
+data-en="A place for those who belong. Cuts, atmosphere, and community — where like-minded people connect.">
+Місце для своїх. Стрижки, атмосфера і спільнота — тут зустрічаються ті, хто поділяє наші цінності.
+</p> <a href="https://www.instagram.com/nd_barberkyiv?igsh=MXdra3J6aTdjOG94aA==" target="_blank" rel="noopener" class="eco-card__link"> <span data-uk="Детальніше" data-en="Learn more">Детальніше</span> <span class="eco-card__link-arrow" aria-hidden="true">→</span> </a> </div> </article> <article class="eco-card eco-card--tattoo reveal"> <div class="eco-card__bg" aria-hidden="true"></div> <span class="eco-card__num" aria-hidden="true">02</span> <div class="eco-card__body"> <p class="eco-card__tag" data-uk="Тату-студія" data-en="Tattoo Studio">Тату-студія</p> <h3 class="eco-card__title">Nord<br>Tattoo</h3> <p class="eco-card__desc"
+data-uk="Тату як знак приналежності та пам'яті. Авторські роботи у стилі dark-realism і traditional."
+data-en="Tattoos as a mark of belonging and memory. Original work in dark-realism and traditional styles.">
+Тату як знак приналежності та пам'яті. Авторські роботи у стилі dark-realism і traditional.
+</p> <a href="https://www.instagram.com/nord_tattoo_kyiv?igsh=NWw2ejk5bzJjaGU0" target="_blank" rel="noopener" class="eco-card__link"> <span data-uk="Портфоліо" data-en="Portfolio">Портфоліо</span> <span class="eco-card__link-arrow" aria-hidden="true">→</span> </a> </div> </article> <article class="eco-card eco-card--label reveal"> <div class="eco-card__bg" aria-hidden="true"></div> <span class="eco-card__num" aria-hidden="true">03</span> <div class="eco-card__body"> <p class="eco-card__tag" data-uk="Музичний лейбл" data-en="Music Label">Музичний лейбл</p> <h3 class="eco-card__title">Nord<br>Music</h3> <p class="eco-card__desc"
+data-uk="Андеграундна музика, що резонує з ідеологією руху. Від людей, які живуть цим."
+data-en="Underground music that resonates with the ideology of the movement. Made by people who live it.">
+Андеграундна музика, що резонує з ідеологією руху. Від людей, які живуть цим.
+</p> <a href="https://www.instagram.com/nord.division.music?igsh=MjV1YWZ6cG53bXQ4" target="_blank" rel="noopener" class="eco-card__link"> <span data-uk="Слухати" data-en="Listen">Слухати</span> <span class="eco-card__link-arrow" aria-hidden="true">→</span> </a> </div> </article> </div> </div> </section> <section class="media section" id="media"> <div class="container"> <div class="media__header reveal"> <div> <p class="label" data-uk="Медіа та Новини" data-en="Media & News">Медіа та Новини</p> <h2 class="section-title" data-uk="Останні<br>події" data-en="Latest<br>News">Останні<br>події</h2> </div> <a href="news.html" class="view-all" data-uk="Всі публікації →" data-en="All posts →">Всі публікації →</a> </div> <div class="news-grid reveal"> <article class="news-card news-card--featured"> <div class="news-card__thumb-wrap"> <img class="news-card__thumb"
+src="https://images.unsplash.com/photo-1529070538774-1843cb3265df?w=900&q=80&fit=crop"
+alt="Відкриття осередку в Миколаєві" loading="lazy"> </div> <div class="news-card__body"> <div class="news-card__meta"> <span class="news-card__tag" data-uk="Осередок" data-en="Cell">Осередок</span> <time class="news-card__date" datetime="2026-04-20" data-uk="20 Квітня 2026" data-en="April 20, 2026">20 Квітня 2026</time> </div> <h3 class="news-card__title" data-uk="Відкриття осередку в Миколаєві" data-en="New Cell Opens in Mykolaiv">Відкриття осередку в Миколаєві</h3> <p class="news-card__excerpt"
+data-uk="«Північна Дивізія» продовжує розширюватись — новий осередок відкрито в Миколаєві. Тепер нас п'ятеро: зустрічаємо нових братів на півдні країни."
+data-en="Nord Division keeps growing — a new cell has opened in Mykolaiv. That makes five. Welcoming our new brothers from the south.">
+«Північна Дивізія» продовжує розширюватись — новий осередок відкрито в Миколаєві. Тепер нас п'ятеро: зустрічаємо нових братів на півдні країни.
+</p> </div> </article> <article class="news-card"> <div class="news-card__thumb-wrap"> <img class="news-card__thumb"
+src="https://images.unsplash.com/photo-1601758228041-f3b2795255f1?w=700&q=80&fit=crop"
+alt="Київський осередок у центрі адопції тварин" loading="lazy"> </div> <div class="news-card__body"> <div class="news-card__meta"> <span class="news-card__tag" data-uk="Волонтерство" data-en="Volunteering">Волонтерство</span> <time class="news-card__date" datetime="2026-04-05" data-uk="5 Квітня 2026" data-en="April 5, 2026">5 Квітня 2026</time> </div> <h3 class="news-card__title"
+data-uk="Київський осередок відвідав центр адопції тварин"
+data-en="Kyiv Cell Visits Animal Shelter">Київський осередок відвідав центр адопції тварин</h3> <p class="news-card__excerpt"
+data-uk="Хлопці з Києва провели час із підопічними центру — допомогли, поспілкувались і нагадали, що дія може бути доброю."
+data-en="The Kyiv guys spent time with shelter animals — helping out, connecting, and proving that action can also mean kindness.">
+Хлопці з Києва провели час із підопічними центру — допомогли, поспілкувались і нагадали, що дія може бути доброю.
+</p> </div> </article> <article class="news-card"> <div class="news-card__thumb-wrap"> <img class="news-card__thumb"
+src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?w=700&q=80&fit=crop"
+alt="Nord Records — трек Лабуда" loading="lazy"> </div> <div class="news-card__body"> <div class="news-card__meta"> <span class="news-card__tag" data-uk="Музика" data-en="Music">Музика</span> <time class="news-card__date" datetime="2026-03-20" data-uk="20 Березня 2026" data-en="March 20, 2026">20 Березня 2026</time> </div> <h3 class="news-card__title"
+data-uk="Nord Records: вийшов новий трек «Лабуда»"
+data-en="Nord Records: New Track 'Labuda' Is Out">Nord Records: вийшов новий трек «Лабуда»</h3> <p class="news-card__excerpt"
+data-uk="Свіжий реліз від нашого лейблу вже доступний на всіх стрімінгових платформах. Слухай — і розповідай своїм."
+data-en="Fresh off the Nord Records label and now live on every streaming platform. Hit play — and share it with your people.">
+Свіжий реліз від нашого лейблу вже доступний на всіх стрімінгових платформах. Слухай — і розповідай своїм.
+</p> </div> </article> </div> </div> </section> <section class="gallery section" id="gallery"> <div class="container"> <div class="gallery__header reveal"> <p class="label" data-uk="Фотогалерея" data-en="Photo Gallery">Фотогалерея</p> <h2 class="section-title" data-uk="Наші моменти" data-en="Our Moments">Наші моменти</h2> </div> </div> <div style="padding-inline: var(--container-pad);"> <div class="gallery__grid" role="list" aria-label="Галерея фотографій"> <figure class="gallery__item" role="listitem" data-index="0"> <img class="gallery__img" src="images/1.jpg" alt="Вишкіл учасників організації" loading="lazy"> <div class="gallery__overlay" aria-hidden="true"> <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button> </div> </figure> <figure class="gallery__item" role="listitem" data-index="1"> <img class="gallery__img" src="images/2.jpg" width="1600" height="1066" alt="Командна робота" loading="lazy"> <div class="gallery__overlay" aria-hidden="true"> <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button> </div> </figure> <figure class="gallery__item" role="listitem" data-index="2"> <img class="gallery__img" src="images/3.jpg" width="1600" height="2400" alt="Захід організації" loading="lazy"> <div class="gallery__overlay" aria-hidden="true"> <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button> </div> </figure> <figure class="gallery__item" role="listitem" data-index="3"> <img class="gallery__img" src="images/4.jpg" width="1600" height="1066" alt="Братерство та єдність" loading="lazy"> <div class="gallery__overlay" aria-hidden="true"> <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button> </div> </figure> <figure class="gallery__item" role="listitem" data-index="4"> <img class="gallery__img" src="images/5.jpg" width="1600" height="1066" alt="Молодь у дії" loading="lazy"> <div class="gallery__overlay" aria-hidden="true"> <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button> </div> </figure> <figure class="gallery__item" role="listitem" data-index="5"> <img class="gallery__img" src="images/6.jpg" width="1600" height="1066" alt="Культура руху" loading="lazy"> <div class="gallery__overlay" aria-hidden="true"> <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button> </div> </figure> <figure class="gallery__item" role="listitem" data-index="6"> <img class="gallery__img" src="images/7.jpg" width="1600" height="2400" alt="Nord Tattoo Studio" loading="lazy"> <div class="gallery__overlay" aria-hidden="true"> <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button> </div> </figure> <figure class="gallery__item" role="listitem" data-index="7"> <img class="gallery__img" src="images/8.jpg" width="1600" height="1066" alt="Захід спільноти" loading="lazy"> <div class="gallery__overlay" aria-hidden="true"> <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button> </div> </figure> <figure class="gallery__item" role="listitem" data-index="8"> <img class="gallery__img" src="images/9.jpg" width="1600" height="2400" alt="Братерство" loading="lazy"> <div class="gallery__overlay" aria-hidden="true"> <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button> </div> </figure> <figure class="gallery__item" role="listitem" data-index="9"> <img class="gallery__img" src="images/10.jpg" width="1600" height="1066" alt="Активність осередку" loading="lazy"> <div class="gallery__overlay" aria-hidden="true"> <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button> </div> </figure> <figure class="gallery__item" role="listitem" data-index="10"> <img class="gallery__img" src="images/11.jpg" width="1600" height="1066" alt="Спільний момент" loading="lazy"> <div class="gallery__overlay" aria-hidden="true"> <button class="gallery__btn" data-uk="Переглянути" data-en="View">Переглянути</button> </div> </figure> </div> </div> </section> <section class="join section" id="join"> <div class="join__watermark" aria-hidden="true">2026</div> <div class="container"> <div class="join__inner"> <p class="join__label" data-uk="Стати частиною руху" data-en="Become Part of the Movement">Стати частиною руху</p> <h2 class="join__title reveal" data-uk="Приєднуйся<br>до нас" data-en="Join<br>Us">Приєднуйся<br>до нас</h2> <p class="join__sub reveal"
+data-uk="Ми шукаємо не просто учасників — ми шукаємо людей, які готові горіти разом з нами. Якщо ти молодий, відданий і хочеш стати частиною чогось більшого — твоє місце тут."
+data-en="We're not just looking for members — we're looking for people ready to burn for something. If you're young, committed, and want to be part of something bigger than yourself — your place is here.">
+Ми шукаємо не просто учасників — ми шукаємо людей, які готові горіти разом з нами. Якщо ти молодий, відданий і хочеш стати частиною чогось більшого — твоє місце тут.
+</p> <div class="join__actions reveal"> <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer"
+class="btn btn--primary btn--lg" data-uk="Заповнити анкету" data-en="Fill Out the Form">Заповнити анкету</a> <a href="#partners" class="btn btn--outline btn--lg" data-uk="Стати партнером" data-en="Become a Partner">Стати партнером</a> </div> <div class="partners" id="partners"> <p class="label" style="justify-content:center;" data-uk="Партнерство" data-en="Partnership">Партнерство</p> <h3 class="partners__title reveal" data-uk="Допоможи нам будувати" data-en="Help Us Build">Допоможи нам будувати</h3> <p class="join__sub reveal" style="max-width:540px; margin: 0 auto 2.5rem;"
+data-uk="Хочеш підтримати організацію — фінансово, ресурсами чи медійно? Заповни коротку форму і ми зв'яжемося з тобою."
+data-en="Want to support the organization — financially, with resources, or through media? Fill out a short form and we'll reach out.">
+Хочеш підтримати організацію — фінансово, ресурсами чи медійно? Заповни коротку форму і ми зв'яжемося з тобою.
+</p> <div class="join__actions reveal"> <a href="https://forms.google.com" target="_blank" rel="noopener noreferrer"
+class="btn btn--primary btn--lg" data-uk="Стати партнером →" data-en="Become a Partner →">Стати партнером →</a> </div> </div> </div> </div> </section> </main> <footer class="footer" role="contentinfo"> <div class="container"> <p class="footer__slogan" data-uk="Молодь • Дія • Братерство" data-en="Youth • Action • Brotherhood">Молодь • Дія • Братерство</p> <div class="footer__grid"> <div class="footer__col"> <p class="footer__col-title" data-uk="Контакти" data-en="Contacts">Контакти</p> <p>Email: <a href="mailto:info@pivnichnadiviziya.ua">info@pivnichnadiviziya.ua</a></p> <p><span data-uk="Телефон" data-en="Phone">Телефон</span>: <a href="tel:+380000000000">+38 (000) 000-00-00</a></p> </div> <div class="footer__col"> <p class="footer__col-title" data-uk="Соціальні мережі" data-en="Social Media">Соціальні мережі</p> <div class="social-links"> <a href="https://www.instagram.com/go.pivnichna.divisiya?igsh=YnBhZTJmZ2YxbGg4" class="social-link" aria-label="Instagram"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"> <rect x="2" y="2" width="20" height="20" rx="5"/> <circle cx="12" cy="12" r="5"/> <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/> </svg> </a> <a href="https://t.me/pivnichna_divisiya" class="social-link" aria-label="Telegram"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"> <path d="M21 5L2 12.5l7 1M21 5l-4.5 16L9.5 13.5M21 5L9.5 13.5m0 0v5l3-3"/> </svg> </a> <a href="#" class="social-link" aria-label="YouTube"> <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"> <rect x="2" y="5" width="20" height="14" rx="3"/> <path d="M10 9l6 3-6 3V9z" fill="currentColor" stroke="none"/> </svg> </a> </div> </div> <div class="footer__col"> <p class="footer__col-title" data-uk="Екосистема" data-en="Ecosystem">Екосистема</p> <ul> <li><a href="https://www.instagram.com/nd_barberkyiv?igsh=MXdra3J6aTdjOG94aA==">Nord Barbershop</a></li> <li><a href="https://www.instagram.com/nord_tattoo_kyiv?igsh=NWw2ejk5bzJjaGU0">Nord Tattoo Studio</a></li> <li><a href="https://www.instagram.com/nord.division.music?igsh=MjV1YWZ6cG53bXQ4">Nord Records</a></li> </ul> </div> </div> <div class="footer__bottom"> <p>© 2026 <span data-uk="Північна Дивізія. Всі права захищено." data-en="Nord Division. All rights reserved.">Північна Дивізія. Всі права захищено.</span></p> <p class="footer__glory" data-uk="Слава Україні" data-en="Glory to Ukraine">Слава Україні</p> </div> </div> </footer> </body> </html>

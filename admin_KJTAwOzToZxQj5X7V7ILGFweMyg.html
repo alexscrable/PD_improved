@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- No-index: prevent search engines from finding admin -->
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet">
+  <!-- X-Frame-Options via meta (backup; set via server header too) -->
+  <meta http-equiv="X-Frame-Options" content="DENY">
+  <!-- Referrer policy: don't leak admin URL -->
+  <meta name="referrer" content="no-referrer">
+  <title>Панель — ПД</title>
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/admin.css">
+  <link rel="stylesheet" href="css/responsive.css">
+  <!-- Scripts loaded in order: auth first, then data, then logic -->
+  <script src="js/newsData.js"></script>
+  <script src="js/admin_auth.js"></script>
+  <script defer src="js/admin.js"></script>
+</head>
+<body class="admin-body">
+
+  <!-- LOGIN SCREEN -->
+  <div class="admin-login" id="admin-login">
+    <div class="admin-login__box">
+      <img src="images/PDlogo.svg" alt="" class="admin-login__logo" draggable="false">
+      <h1 class="admin-login__title">Адмін</h1>
+      <p class="admin-login__sub">Північна Дивізія</p>
+      <div class="admin-field" style="width:100%;">
+        <label class="admin-label" for="login-password">Пароль</label>
+        <input type="password" id="login-password" class="admin-input"
+               placeholder="••••••••••"
+               autocomplete="off"
+               autocorrect="off"
+               autocapitalize="off"
+               spellcheck="false">
+      </div>
+      <div class="admin-error" id="login-error" style="display:none;width:100%;"></div>
+      <button class="admin-btn admin-btn--primary" id="login-btn" style="width:100%;">Увійти →</button>
+      <p class="admin-login__hint">Забув пароль — звернись до адміністратора системи</p>
+    </div>
+  </div>
+
+  <!-- ADMIN PANEL -->
+  <div class="admin-panel" id="admin-panel" style="display:none;">
+
+    <aside class="admin-sidebar">
+      <div class="admin-sidebar__logo">
+        <img src="images/PDlogo.svg" alt="" style="width:32px;height:32px;" draggable="false">
+        <span>Панель</span>
+      </div>
+      <nav class="admin-nav">
+        <button class="admin-nav__item admin-nav__item--active" data-tab="articles">
+          <span class="admin-nav__icon">📰</span> Новини
+        </button>
+        <button class="admin-nav__item" data-tab="new">
+          <span class="admin-nav__icon">✏️</span> Написати
+        </button>
+      </nav>
+      <div class="admin-sidebar__bottom">
+        <a href="index.html" class="admin-sidebar__link" rel="noopener">← На сайт</a>
+        <button class="admin-sidebar__link" id="logout-btn">Вийти</button>
+      </div>
+    </aside>
+
+    <div class="admin-main">
+
+      <!-- TAB: Articles list -->
+      <div class="admin-tab" id="tab-articles">
+        <div class="admin-topbar">
+          <h2 class="admin-topbar__title">Всі новини</h2>
+          <button class="admin-btn admin-btn--primary" id="new-article-btn">+ Нова стаття</button>
+        </div>
+        <div class="admin-articles-list" id="admin-articles-list"></div>
+      </div>
+
+      <!-- TAB: New/Edit article -->
+      <div class="admin-tab" id="tab-new" style="display:none;">
+        <div class="admin-topbar">
+          <h2 class="admin-topbar__title" id="editor-title">Нова стаття</h2>
+          <div style="display:flex;gap:.75rem;align-items:center;">
+            <span class="admin-shortcut-hint">Ctrl+S — зберегти</span>
+            <button class="admin-btn" id="preview-btn">👁 Прев'ю</button>
+            <button class="admin-btn admin-btn--primary" id="publish-btn">Опублікувати →</button>
+          </div>
+        </div>
+
+        <div class="admin-editor">
+          <div class="admin-editor__fields">
+
+            <div class="admin-field">
+              <label class="admin-label" for="f-title">Заголовок *</label>
+              <input type="text" id="f-title" class="admin-input"
+                     placeholder="Назва статті" maxlength="200"
+                     autocomplete="off" spellcheck="true">
+            </div>
+
+            <div class="admin-field-row">
+              <div class="admin-field">
+                <label class="admin-label" for="f-tag">Категорія *</label>
+                <select id="f-tag" class="admin-input admin-select">
+                  <option value="">Обери категорію</option>
+                  <option value="Осередок">Осередок</option>
+                  <option value="Волонтерство">Волонтерство</option>
+                  <option value="Музика">Музика</option>
+                  <option value="Вишкіл">Вишкіл</option>
+                  <option value="Партнерство">Партнерство</option>
+                </select>
+              </div>
+              <div class="admin-field">
+                <label class="admin-label" for="f-date">Дата публікації *</label>
+                <input type="date" id="f-date" class="admin-input">
+              </div>
+            </div>
+
+            <div class="admin-field">
+              <label class="admin-label" for="f-cover">URL обкладинки (тільки https://)</label>
+              <input type="url" id="f-cover" class="admin-input"
+                     placeholder="https://images.unsplash.com/..."
+                     pattern="https://.*"
+                     autocomplete="off">
+              <div class="admin-cover-preview" id="cover-preview"></div>
+            </div>
+
+            <div class="admin-field">
+              <label class="admin-label" for="f-excerpt">Короткий анонс * <span class="admin-label-counter" id="excerpt-counter">0/500</span></label>
+              <textarea id="f-excerpt" class="admin-input admin-textarea"
+                        rows="2" maxlength="500"
+                        placeholder="Що сталося — коротко, 1-2 речення для картки новини"></textarea>
+            </div>
+
+            <div class="admin-field">
+              <label class="admin-label">Текст статті *</label>
+              <div class="editor-toolbar" role="toolbar" aria-label="Форматування">
+                <button class="editor-tool" data-action="h2" title="Заголовок H2" type="button">H2</button>
+                <button class="editor-tool" data-action="h3" title="Підзаголовок H3" type="button">H3</button>
+                <button class="editor-tool" data-action="bold"   title="Жирний" type="button"><b>B</b></button>
+                <button class="editor-tool" data-action="italic" title="Курсив"  type="button"><i>I</i></button>
+                <button class="editor-tool" data-action="quote"  title="Цитата"  type="button">❝</button>
+                <button class="editor-tool" data-action="ul"     title="Список"  type="button">≡</button>
+                <button class="editor-tool" data-action="link"   title="Посилання" type="button">🔗</button>
+                <button class="editor-tool" data-action="img"    title="Зображення" type="button">🖼</button>
+                <span class="editor-toolbar__sep"></span>
+                <button class="editor-tool" data-action="clear"  title="Очистити" type="button">✕</button>
+              </div>
+              <div id="f-body" class="admin-editor__body"
+                   contenteditable="true"
+                   spellcheck="true"
+                   data-placeholder="Текст статті..."></div>
+            </div>
+
+          </div>
+
+          <!-- Live preview panel -->
+          <div class="admin-preview-panel" id="preview-panel" style="display:none;">
+            <div class="preview-panel__header">
+              <span>Прев'ю</span>
+              <button class="admin-btn" id="close-preview" type="button">✕</button>
+            </div>
+            <div class="preview-panel__body" id="preview-content"></div>
+          </div>
+        </div>
+
+        <input type="hidden" id="f-id">
+      </div>
+
+    </div>
+  </div>
+
+</body>
+</html>

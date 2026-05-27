@@ -1,0 +1,92 @@
+# ============================================================
+#  Північна Дивізія — Security Headers (.htaccess)
+#  Works on Apache. For Nginx see nginx_security.conf
+# ============================================================
+
+# ── PREVENT DIRECTORY LISTING ──
+Options -Indexes
+
+# ── HIDE SERVER SIGNATURE ──
+ServerSignature Off
+
+# ── BLOCK ACCESS TO SENSITIVE FILES ──
+<FilesMatch "\.(htaccess|htpasswd|env|git|log|sh|bak|sql|swp|DS_Store)$">
+  Require all denied
+</FilesMatch>
+
+# Block old admin.html if it somehow exists
+<Files "admin.html">
+  Require all denied
+</Files>
+
+# ── SECURITY HEADERS ──
+<IfModule mod_headers.c>
+  # Prevent clickjacking
+  Header always set X-Frame-Options "DENY"
+
+  # Prevent MIME-type sniffing
+  Header always set X-Content-Type-Options "nosniff"
+
+  # XSS filter (legacy browsers)
+  Header always set X-XSS-Protection "1; mode=block"
+
+  # Referrer policy — don't leak admin URL to external sites
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+
+  # Content Security Policy
+  Header always set Content-Security-Policy "\
+    default-src 'self'; \
+    script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; \
+    style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; \
+    font-src 'self' https://fonts.gstatic.com; \
+    img-src 'self' https: data:; \
+    connect-src 'none'; \
+    object-src 'none'; \
+    base-uri 'self'; \
+    frame-ancestors 'none'"
+
+  # Permissions policy — disable dangerous browser APIs
+  Header always set Permissions-Policy "\
+    geolocation=(), \
+    microphone=(), \
+    camera=(), \
+    payment=(), \
+    usb=()"
+
+  # HSTS — force HTTPS for 1 year (only enable after HTTPS is confirmed!)
+  # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+
+  # Remove server info headers
+  Header unset Server
+  Header unset X-Powered-By
+</IfModule>
+
+# ── FORCE HTTPS (uncomment when SSL is set up) ──
+# <IfModule mod_rewrite.c>
+#   RewriteEngine On
+#   RewriteCond %{HTTPS} off
+#   RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
+
+# ── RATE LIMIT (requires mod_ratelimit or mod_qos) ──
+# <IfModule mod_ratelimit.c>
+#   SetOutputFilter RATE_LIMIT
+#   SetEnv rate-limit 400
+# </IfModule>
+
+# ── CACHE CONTROL ──
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType image/jpg  "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png  "access plus 1 month"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType text/css   "access plus 1 week"
+  ExpiresByType application/javascript "access plus 1 week"
+  ExpiresByType text/html  "access plus 0 seconds"
+</IfModule>
+
+# ── GZIP COMPRESSION ──
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/css application/javascript image/svg+xml
+</IfModule>
